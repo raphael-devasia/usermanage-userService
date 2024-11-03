@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+  rpc CreateUserProfile (UserProfileRequest) returns (UserProfileResponse);
+}
+message UserProfileRequest {
+    string userId = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string email = 4;
+    string role = 5;
+
+    string profileImage = 6;
+}
+
+message UserProfileResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message UpdateUserRequest {
+  string userId = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string profileImage = 4;
+}
+
+message UpdateUserResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetUserRequest {
+  string userId = 1;
+}
+
+message GetUserResponse {
+  bool success = 1;
+    string message = 2;
+  User user= 3;
+}
+ 
+message User {
+string userId = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+}
